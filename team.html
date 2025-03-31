@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechTrek Ranger</title>
+    <style>
+      /* Reuse the same styles from index.html */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .logo span {
+        color: #3498db;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #3498db;
+      }
+
+      .page-header {
+        background-color: #3498db;
+        color: white;
+        text-align: center;
+        padding: 60px 0;
+      }
+
+      .page-header h1 {
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+
+      .team-section {
+        padding: 80px 0;
+        background-color: white;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 36px;
+        color: #2c3e50;
+      }
+
+      .team-member {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .team-member:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .member-img {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .member-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .member-info {
+        flex: 1;
+      }
+
+      .member-info h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #3498db;
+      }
+
+      .member-title {
+        font-size: 18px;
+        color: #7f8c8d;
+        margin-bottom: 20px;
+      }
+
+      .member-bio {
+        margin-bottom: 20px;
+      }
+
+      .member-qualifications {
+        margin-top: 30px;
+      }
+
+      .qualification-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .qualification-icon {
+        font-size: 24px;
+        margin-right: 15px;
+        color: #3498db;
+      }
+
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+      }
+
+      .social-links {
+        margin: 20px 0;
+      }
+
+      .social-links a {
+        color: white;
+        margin: 0 10px;
+        font-size: 20px;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #3498db;
+      }
+
+      @media (max-width: 768px) {
+        .team-member,
+        .team-member:nth-child(even) {
+          flex-direction: column;
+        }
+
+        .page-header h1 {
+          font-size: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">YourCity<span>MathTutor</span></div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="index.html#programs">Programs</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Meet Our Team</h1>
+        <p>Dedicated math educators helping students succeed</p>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <h2 class="section-title">Our Experts</h2>
+
+        <div class="team-member">
+          <div class="member-img">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+              alt="Lead Math Tutor"
+            />
+          </div>
+          <div class="member-info">
+            <h3>[Your Name]</h3>
+            <p class="member-title">Lead Math Tutor & Founder</p>
+            <div class="member-bio">
+              <p>
+                Hi, I'm [Your Name], a certified math teacher with over 8 years
+                of experience helping students overcome their math challenges. I
+                specialize in making complex concepts simple and building
+                students' confidence in their math abilities.
+              </p>
+              <p>
+                My approach focuses on identifying each student's unique
+                learning style and creating customized lesson plans that address
+                their specific needs.
+              </p>
+            </div>
+            <div class="member-qualifications">
+              <div class="qualification-item">
+                <span class="qualification-icon">🎓</span>
+                <span
+                  >[Your Degree] in [Your Major] from [Your University]</span
+                >
+              </div>
+              <div class="qualification-item">
+                <span class="qualification-icon">⏱️</span>
+                <span>8+ years teaching experience</span>
+              </div>
+              <div class="qualification-item">
+                <span class="qualification-icon">👨‍🏫</span>
+                <span>200+ students helped</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional team members can be added here -->
+        <div class="team-member">
+          <div class="member-img">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+              alt="Math Tutor"
+            />
+          </div>
+          <div class="member-info">
+            <h3>Sarah Johnson</h3>
+            <p class="member-title">High School Math Specialist</p>
+            <div class="member-bio">
+              <p>
+                Sarah specializes in Algebra, Geometry, and Trigonometry, with a
+                particular focus on helping students transition from middle
+                school to high school math.
+              </p>
+              <p>
+                Her patient approach and ability to break down complex problems
+                into manageable steps have helped countless students overcome
+                their math anxiety.
+              </p>
+            </div>
+            <div class="member-qualifications">
+              <div class="qualification-item">
+                <span class="qualification-icon">🎓</span>
+                <span>M.Ed in Mathematics Education from State University</span>
+              </div>
+              <div class="qualification-item">
+                <span class="qualification-icon">⏱️</span>
+                <span>5 years classroom experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="logo">YourCity<span>MathTutor</span></div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook">f</i></a>
+          <a href="#"><i class="fab fa-twitter">t</i></a>
+          <a href="#"><i class="fab fa-instagram">i</i></a>
+          <a href="#"><i class="fab fa-linkedin">in</i></a>
+        </div>
+        <p>&copy; 2023 Your City Math Tutor. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
