@@ -96,37 +96,61 @@
 
     .team-member {
       display: flex;
-      align-items: center; /* Vertically align image and text */
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
-    .team-member img{
-      width: 200px; /* Fixed width for images */
-      height: 200px; /* Fixed height for images */
-      object-fit: cover; /* Ensure images maintain aspect ratio */
-      margin-right: 20px;
+    .team-member:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .member-img {
+      flex: 1;
       border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .member-img img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .member-info {
       flex: 1;
-      min-width: 200px;
     }
 
     .member-info h3 {
-      margin: 0 0 10px;
-      font-size: 24px;
+      font-size: 28px;
+      margin-bottom: 15px;
       color: #3498db;
     }
 
-    .member-info p {
-      margin: 0;
-      font-size: 16px;
-      color: #333;
+    .member-title {
+      font-size: 18px;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+
+    .member-bio {
+      margin-bottom: 20px;
+    }
+
+    .member-qualifications {
+      margin-top: 30px;
+    }
+
+    .qualification-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .qualification-icon {
+      font-size: 24px;
+      margin-right: 15px;
+      color: #3498db;
     }
 
     footer {
@@ -184,48 +208,55 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>Meet Our Volunteers</h1>
+      <h1>Support Our Mission</h1>
     </div>
   </section>
 
-  <!-- Team Section -->
+  <!-- Donation -->
   <section class="team-section">
     <div class="container">
-      <div class="team-member">
-          <img
-            src="images/kathyhuang.jpeg"
-            alt="Lead Math Tutor" />
-        <div class="member-info">
-          <h3>Kathy Huang</h3>
-            <p>
-              Hi, I'm Kathy. I’m a software engineer at Google with 5+ years
-              of experiences in high-tech companies. I love building software
-              and analyzing complex data using AI. Helping others learn how to
-              code is something I’m truly passionate about. Outside of tech, I
-              enjoy cooking up new recipes and reading books.
-            </p>
-        </div>
-      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start;">
 
-      <!-- Additional team members can be added here -->
-      <div class="team-member">
-          <img
-            src="images/brianliu.jpeg"
-            alt="Math Tutor" />
-        <div class="member-info">
-          <h3>J.Q. (Brian) Liu</h3>
-            <p>
-              Hi, I'm Brian. I'm a computer science professor at the NC State
-              University. I teach computer networks, quantum engineering,
-              cybersecurity, and programming courses. I also supervise
-              graduate and post-graduate students as we explore some of
-              today’s most challenging research problems. I enjoy playing
-              soccer and woodworking in my free time.
-            </p>
+        <!-- Left Panel: Non-Profit Statement -->
+        <div style="flex: 0 0 30%; min-width: 280px;">
+          <p style="font-size: 18px; line-height: 1.7;">
+            TechTrek Ranger is a 501(c)(3) nonprofit organization committed to inspiring the next generation of tech
+            leaders.
+            All our instructors and organizers volunteer their time to teach, and generously donate course materials and
+            equipment
+            for free. Every contribution goes directly toward outreach events, hands-on workshops, and access to
+            cutting-edge technology
+            for K–12 students.
+          </p>
+          <p style="font-size: 18px; margin-top: 20px;">
+            Your donation helps us keep our programs free and accessible for students of all backgrounds. Thank you for
+            your support!
+          </p>
         </div>
+
+        <!-- Right Panel: PayPal -->
+        <div style="flex: 0 0 65%; min-width: 300px; text-align: center;">
+          <!-- PayPal Embedded Script -->
+          <script
+            src="https://www.paypal.com/sdk/js?client-id=BAAdBmkxjYj-x2ZwxnWX7ieUHEcZfRvVLuQ0dmw9VantWjtzL9bYCoFIzfHECmiZzF74nZwgUw59dfyEF8&components=hosted-buttons&enable-funding=venmo&currency=USD">
+            </script>
+
+          <div id="paypal-container-TMLSHB9E3KPSE"></div>
+          <script>
+            paypal.HostedButtons({
+              hostedButtonId: "TMLSHB9E3KPSE",
+            }).render("#paypal-container-TMLSHB9E3KPSE")
+          </script>
+        <!-- <form action="https://www.paypal.com/donate" method="post" target="_top">
+          <input type="hidden" name="hosted_button_id" value="2V9CFQJKRDA2W" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit"
+            title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form> -->
       </div>
     </div>
   </section>
+
 
   <!-- Footer -->
   <footer>
