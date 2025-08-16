@@ -1,275 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechTrek Ranger</title>
-    <style>
-      /* Reuse the same styles from index.html */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Arial", sans-serif;
-      }
 
-      body {
-        line-height: 1.6;
-        color: #333;
-        background-color: #f9f9f9;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechTrek Ranger</title>
+  <link rel="icon" type="image/png" href="images/ttranger_half_logo.png" />
+  <style>
+    /* Reuse the same styles from index.html */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
 
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
 
-      header {
-        background-color: #2c3e50;
-        color: white;
-        padding: 20px 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
 
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    header {
+      background-color: #e8f9fd;
+      color: #000000;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-      .logo {
-        font-size: 24px;
-        font-weight: bold;
-      }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .logo span {
-        color: #3498db;
-      }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-      .nav-links {
-        display: flex;
-        list-style: none;
-      }
+    .logo img {
+      height: 65px;
+      /* Adjust as needed */
+      margin-left: 10px;
+    }
 
-      .nav-links li {
-        margin-left: 30px;
-      }
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
 
-      .nav-links a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
+    .nav-links li {
+      margin-left: 30px;
+    }
 
-      .nav-links a:hover {
-        color: #3498db;
-      }
+    .nav-links a {
+      color: #000000;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-      .page-header {
-        background-color: #3498db;
-        color: white;
-        text-align: center;
-        padding: 60px 0;
+    .nav-links a:hover {
+      color: #3498db;
+    }
+
+    .page-header {
+      background-color: #3498db;
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .page-header h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .team-section {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 36px;
+      color: #2c3e50;
+    }
+
+    /* programs Section */
+    .programs {
+      padding: 80px 0;
+      background-color: #f1f5f9;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .program-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .program-icon {
+      text-align: center;
+    }
+
+    .program-icon img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 10px;
+    }
+
+    .program-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .age {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin: 15px 0;
+    }
+
+    footer {
+      background-color: #e8f9fd;
+      color: #000000;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .social-links {
+      margin: 20px 0;
+    }
+
+    .social-links a {
+      color: #000000;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #3498db;
+    }
+
+    @media (max-width: 768px) {
+
+      .team-member,
+      .team-member:nth-child(even) {
+        flex-direction: column;
       }
 
       .page-header h1 {
-        font-size: 42px;
-        margin-bottom: 20px;
+        font-size: 32px;
       }
+    }
+  </style>
+</head>
 
-      .team-section {
-        padding: 80px 0;
-        background-color: white;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 50px;
-        font-size: 36px;
-        color: #2c3e50;
-      }
-
-      .team-member {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        margin-bottom: 60px;
-      }
-
-      .team-member:nth-child(even) {
-        flex-direction: row-reverse;
-      }
-
-      .member-img {
-        flex: 1;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .member-img img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .member-info {
-        flex: 1;
-      }
-
-      .member-info h3 {
-        font-size: 28px;
-        margin-bottom: 15px;
-        color: #3498db;
-      }
-
-      .member-title {
-        font-size: 18px;
-        color: #7f8c8d;
-        margin-bottom: 20px;
-      }
-
-      .member-bio {
-        margin-bottom: 20px;
-      }
-
-      .member-qualifications {
-        margin-top: 30px;
-      }
-
-      .qualification-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-
-      .qualification-icon {
-        font-size: 24px;
-        margin-right: 15px;
-        color: #3498db;
-      }
-
-      footer {
-        background-color: #2c3e50;
-        color: white;
-        text-align: center;
-        padding: 30px 0;
-      }
-
-      .social-links {
-        margin: 20px 0;
-      }
-
-      .social-links a {
-        color: white;
-        margin: 0 10px;
-        font-size: 20px;
-        transition: color 0.3s;
-      }
-
-      .social-links a:hover {
-        color: #3498db;
-      }
-
-      @media (max-width: 768px) {
-        .team-member,
-        .team-member:nth-child(even) {
-          flex-direction: column;
-        }
-
-        .page-header h1 {
-          font-size: 32px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header & Navigation -->
-    <header>
-      <div class="container">
-        <nav>
-          <div class="logo">TechTrek Ranger</div>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="help.html">Help Us</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Page Header -->
-    <section class="page-header">
-      <div class="container">
-        <h1>Meet Our Volunteers</h1>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-      <div class="container">
-        <div class="team-member">
-          <div class="member-img">
-            <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-              alt="Lead Math Tutor"
-            />
-          </div>
-          <div class="member-info">
-            <h3>Kathy Huang</h3>
-            <div class="member-bio">
-              <p>
-                Hi, I'm Kathy. I’m a software engineer at Google with 5+ years
-                of experiences in high-tech companies. I love building software
-                and analyzing complex data using AI. Helping others learn how to
-                code is something I’m truly passionate about. Outside of tech, I
-                enjoy cooking up new recipes and reading books.
-              </p>
-            </div>
-          </div>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <img src="images/ttranger_full_logo.png" alt="fulllogo" />
         </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="help.html">Help Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <!-- Additional team members can be added here -->
-        <div class="team-member">
-          <div class="member-img">
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-              alt="Math Tutor"
-            />
+  <!-- programs Section -->
+  <section class="programs" id="programs">
+    <div class="container">
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-icon">
+            <img src="images/hacker.png" alt="security" />
           </div>
-          <div class="member-info">
-            <h3>J.Q. (Brian) Liu</h3>
-            <div class="member-bio">
-              <p>
-                Hi, I'm Brian. I'm a computer science professor at the NC State
-                University. I teach computer networks, quantum engineering,
-                cybersecurity, and programming courses. I also supervise
-                graduate and post-graduate students as we explore some of
-                today’s most challenging research problems. I enjoy playing
-                soccer and woodworking in my free time.
-              </p>
-            </div>
+          <h3>Hacker Rangers</h3>
+          <p>
+            Learn and practice how to protect/hack a cyber system using the elementary algebra you leaned in your class.
+          </p>
+          <div class="age">Best For: 9-12th grade</div>
+          <a href="#contact" class="btn">Learn More...</a>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">
+            <img src="images/quantum.png" alt="quantum" />
           </div>
+          <h3>Quantum Rangers</h3>
+          <p>
+            See, touch, and build intuition of complex quantum phenomena using board games, 3D annimations, and simple
+            optical experiments.
+          </p>
+          <div class="age">Best For: 9-12th grade</div>
+          <a href="#contact" class="btn">Learn More...</a>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">
+            <img src="images/ai.png" alt="ai" />
+          </div>
+          <h3>AI Rangers</h3>
+          <p>
+            Master AI agents to be your everyday partner for study and entertainment. Join us to learn how to use the
+            most effective language to talk to AI agents.
+          </p>
+          <div class="age">Best For: 6-12 grade</div>
+          <a href="#contact" class="btn">Learn More...</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="logo">TechTrek Ranger</span></div>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook">f</i></a>
-          <a href="#"><i class="fab fa-twitter">t</i></a>
-          <a href="#"><i class="fab fa-instagram">i</i></a>
-          <a href="#"><i class="fab fa-linkedin">in</i></a>
-        </div>
-        <p>&copy; 2024 TechTrek Ranger. All Rights Reserved.</p>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="logo">TechTrek Ranger</span></div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook">f</i></a>
+        <a href="#"><i class="fab fa-twitter">t</i></a>
+        <a href="#"><i class="fab fa-instagram">i</i></a>
+        <a href="#"><i class="fab fa-linkedin">in</i></a>
       </div>
-    </footer>
-  </body>
+      <p>&copy; 2024 TechTrek Ranger. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
 </html>
