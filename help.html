@@ -73,6 +73,70 @@
       color: #3498db;
     }
 
+    /* Hide the hamburger button on desktop */
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Mobile-First Styling (for screens up to 768px) */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        /* Initially hide the links on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        /* Adjust based on your header's height */
+        left: 0;
+        width: 100%;
+        background-color: #e8f9fd;
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: 0 2px 5px #e8f9fd;
+      }
+
+      .nav-links.active {
+        display: flex;
+        /* Show the links when the 'active' class is added */
+      }
+
+      /* Show the hamburger button on mobile */
+      .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger-icon {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .hamburger-icon::before,
+      .hamburger-icon::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: rgb(0, 0, 0);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .hamburger-icon::before {
+        transform: translateY(-8px);
+      }
+
+      .hamburger-icon::after {
+        transform: translateY(8px);
+      }
+    }
+
     .page-header {
       background-color: #3498db;
       color: white;
@@ -196,15 +260,21 @@
   <!-- Header & Navigation -->
   <header>
     <div class="container">
-      <nav>
-        <div class="logo"><img src="images/ttranger_full_logo.png" alt="fulllogo" /></div>
-        <ul class="nav-links">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="images/ttranger_full_logo.png" alt="fulllogo" />
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation">
+          <span class="hamburger-icon"></span>
+        </button>
+        <ul class="nav-links" id="main-navigation" aria-hidden="true">
           <li><a href="index.html">Home</a></li>
           <li><a href="team.html">Team</a></li>
           <li><a href="programs.html">Programs</a></li>
           <li><a href="help.html">Help Us</a></li>
         </ul>
       </nav>
+      <script src="script.js"></script>
     </div>
   </header>
 
