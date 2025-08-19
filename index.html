@@ -72,6 +72,67 @@
         color: #3498db;
       }
 
+      /* Hide the hamburger button on desktop */
+      .menu-toggle {
+        display: none;
+      }
+
+      /* Mobile-First Styling (for screens up to 768px) */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none; /* Initially hide the links on mobile */
+          flex-direction: column;
+          position: absolute;
+          top: 60px; /* Adjust based on your header's height */
+          left: 0;
+          width: 100%;
+          background-color: #444;
+          padding: 1rem 0;
+          text-align: center;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links.active {
+          display: flex; /* Show the links when the 'active' class is added */
+        }
+
+        /* Show the hamburger button on mobile */
+        .menu-toggle {
+          display: block;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+        }
+
+        .hamburger-icon {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background-color: white;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger-icon::before,
+        .hamburger-icon::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          background-color: white;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger-icon::before {
+          transform: translateY(-8px);
+        }
+
+        .hamburger-icon::after {
+          transform: translateY(8px);
+        }
+      }
+
       .section-title {
         text-align: center;
         margin-bottom: 50px;
@@ -82,7 +143,7 @@
       /* Hero Section */
       .hero {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+          url("images/hero.png");
         background-size: cover;
         background-position: center;
         color: white;
@@ -126,7 +187,7 @@
 
       .programs-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, 360px);
         gap: 30px;
       }
 
@@ -143,14 +204,27 @@
       }
 
       .program-icon {
-        font-size: 40px;
-        color: #3498db;
-        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .program-icon img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        margin-right: 20px;
+        border-radius: 10px;
       }
 
       .program-card h3 {
         font-size: 22px;
         margin-bottom: 15px;
+      }
+
+      .age {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin: 15px 0;
       }
 
       .price {
@@ -400,17 +474,25 @@
     <!-- Header & Navigation -->
     <header>
       <div class="container">
-        <nav>
+        <nav class="navbar">
           <div class="logo">
             <img src="images/ttranger_full_logo.png" alt="fulllogo" />
           </div>
-          <ul class="nav-links">
+          <button
+            class="menu-toggle"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+          >
+            <span class="hamburger-icon"></span>
+          </button>
+          <ul class="nav-links" id="main-navigation" aria-hidden="true">
             <li><a href="#home">Home</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="programs.html">Programs</a></li>
             <li><a href="help.html">Help Us</a></li>
           </ul>
         </nav>
+        <script src="script.js"></script>
       </div>
     </header>
 
@@ -418,7 +500,13 @@
     <section class="hero" id="home">
       <div class="container">
         <h1>TechTrek Ranger | Science is Adventure</h1>
-        <p>TechTrek Ranger is a non-profit organization ***</p>
+        <p>
+          We are a non-profit organization based in North Carolina’s Research
+          Triangle Park, committed to making science education fun and
+          approachable to kids of all ages. Our volunteers are scientists,
+          engineers, and university professors; and we teach a variaty of
+          cutting-edge topics in science and techology.
+        </p>
         <a href="#contact" class="btn">Schedule a Session</a>
       </div>
     </section>
@@ -456,41 +544,24 @@
         <h2 class="section-title">Ongoing Programs</h2>
         <div class="programs-grid">
           <div class="program-card">
-            <div class="program-icon">🧮</div>
-            <h3>Elementary & Middle School Math</h3>
+            <div class="program-icon">
+              <img src="images/ai.png" alt="ai" />
+            </div>
+            <h3>AI Rangers</h3>
             <p>
-              Build strong foundations in arithmetic, fractions, decimals, and
-              pre-algebra concepts.
+              Master AI agents to be your everyday partner for study and
+              entertainment. Join us to learn how to use the most effective
+              language to talk to AI agents.
             </p>
-            <div class="price">$50/hour</div>
-            <a href="#contact" class="btn">Book Now</a>
-          </div>
-          <div class="program-card">
-            <div class="program-icon">✖️</div>
-            <h3>High School Math</h3>
-            <p>
-              Algebra, Geometry, Trigonometry, Pre-Calculus, and Calculus
-              tutoring tailored to your curriculum.
-            </p>
-            <div class="price">$60/hour</div>
-            <a href="#contact" class="btn">Book Now</a>
-          </div>
-          <div class="program-card">
-            <div class="program-icon">🎓</div>
-            <h3>Test Preparation</h3>
-            <p>
-              Comprehensive prep for SAT, ACT, GRE, and other standardized math
-              tests with proven strategies.
-            </p>
-            <div class="price">$70/hour</div>
-            <a href="#contact" class="btn">Book Now</a>
+            <div class="age">Best For: 6-12 grade</div>
+            <a href="#contact" class="btn">Learn More...</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- <section class="testimonials">
       <div class="container">
         <h2 class="section-title">What Parents and Students Say</h2>
 
@@ -697,7 +768,7 @@
           updateTestimonials();
         };
       });
-    </script>
+    </script> -->
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
