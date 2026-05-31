@@ -5,469 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechTrek Ranger</title>
     <link rel="icon" type="image/png" href="images/ttranger_half_logo.png" />
-    <style>
-      /* Basic Reset & Global Styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Arial", sans-serif;
-      }
-
-      body {
-        line-height: 1.6;
-        color: #333;
-        background-color: #f9f9f9;
-      }
-
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
-
-      header {
-        background-color: #e8f9fd;
-        color: white;
-        padding: 20px 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .logo img {
-        height: 65px;
-        /* Adjust as needed */
-        margin-left: 10px;
-      }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
-      }
-
-      .nav-links li {
-        margin-left: 30px;
-      }
-
-      .nav-links a {
-        color: #000000;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: #3498db;
-      }
-
-      /* Hide the hamburger button on desktop */
-      .menu-toggle {
-        display: none;
-      }
-
-      /* Mobile-First Styling (for screens up to 768px) */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none; /* Initially hide the links on mobile */
-          flex-direction: column;
-          position: absolute;
-          top: 100px; /* Adjust based on your header's height */
-          left: 0;
-          width: 100%;
-          background-color: #e8f9fd;
-          padding: 1rem 0;
-          text-align: center;
-          box-shadow: 0 2px 5px #e8f9fd;
-        }
-
-        .nav-links.active {
-          display: flex; /* Show the links when the 'active' class is added */
-        }
-
-        /* Show the hamburger button on mobile */
-        .menu-toggle {
-          display: block;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0.5rem;
-        }
-
-        .hamburger-icon {
-          display: block;
-          width: 25px;
-          height: 3px;
-          background-color: rgb(0, 0, 0);
-          position: relative;
-          transition: all 0.3s ease-in-out;
-        }
-
-        .hamburger-icon::before,
-        .hamburger-icon::after {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 3px;
-          background-color: rgb(0, 0, 0);
-          transition: all 0.3s ease-in-out;
-        }
-
-        .hamburger-icon::before {
-          transform: translateY(-8px);
-        }
-
-        .hamburger-icon::after {
-          transform: translateY(8px);
-        }
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 50px;
-        font-size: 36px;
-        color: #2c3e50;
-      }
-
-      /* Hero Section */
-      .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("images/hero.png");
-        background-size: cover;
-        background-position: center;
-        color: white;
-        text-align: center;
-        padding: 100px 0;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-        margin-bottom: 20px;
-      }
-
-      .hero p {
-        font-size: 20px;
-        margin-bottom: 30px;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .btn {
-        display: inline-block;
-        background-color: #3498db;
-        color: white;
-        padding: 12px 30px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
-      }
-
-      .btn:hover {
-        background-color: #2980b9;
-      }
-
-      /* programs Section */
-      .programs {
-        padding: 80px 0;
-        background-color: #f1f5f9;
-      }
-
-      .programs-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 360px);
-        gap: 30px;
-      }
-
-      .program-card {
-        background-color: white;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-      }
-
-      .program-card:hover {
-        transform: translateY(-10px);
-      }
-
-      .program-icon {
-        text-align: center;
-      }
-
-      .program-icon img {
-        width: 300px;
-        height: 200px;
-        object-fit: cover;
-        margin-right: 20px;
-        border-radius: 10px;
-      }
-
-      .program-card h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
-      }
-
-      .age {
-        font-size: 20px;
-        font-weight: bold;
-        color: #2c3e50;
-        margin: 15px 0;
-      }
-
-      .price {
-        font-size: 24px;
-        font-weight: bold;
-        color: #2c3e50;
-        margin: 15px 0;
-      }
-
-      /* Contact Section */
-      .contact {
-        padding: 80px 0;
-        background-color: #f1f5f9;
-      }
-
-      .contact-container {
-        display: flex;
-        gap: 40px;
-      }
-
-      .contact-info {
-        flex: 1;
-      }
-
-      .contact-info h3 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        color: #3498db;
-      }
-
-      .contact-info p {
-        margin-bottom: 15px;
-      }
-
-      .contact-form {
-        flex: 1;
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-
-      .form-group input,
-      .form-group textarea,
-      .form-group select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-      }
-
-      .form-group textarea {
-        height: 150px;
-      }
-
-      /* Footer */
-      footer {
-        background-color: #e8f9fd;
-        color: #000000;
-        text-align: center;
-        padding: 30px 0;
-      }
-
-      .social-links {
-        margin: 20px 0;
-      }
-
-      .social-links a {
-        color: #000000;
-        margin: 0 10px;
-        font-size: 20px;
-        transition: color 0.3s;
-      }
-
-      .social-links a:hover {
-        color: #3498db;
-      }
-
-      /* Theme Gallery Section */
-      .theme-gallery {
-        padding: 40px 0;
-        background-color: white;
-      }
-
-      .gallery-wrapper {
-        position: relative;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .gallery-track {
-        display: flex;
-        transition: transform 0.5s ease;
-      }
-
-      .gallery-slide {
-        min-width: 100%;
-        position: relative;
-      }
-
-      .gallery-img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-      }
-
-      /* Testimonials Section */
-      .testimonials {
-        padding: 80px 0;
-        background-color: #f1f5f9;
-      }
-
-      .testimonials-wrapper {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .testimonials-track {
-        display: flex;
-        transition: transform 0.5s ease;
-        padding: 10px 0;
-      }
-
-      .testimonial-card {
-        flex: 0 0 calc(33.333% - 20px);
-        margin: 0 10px;
-        background-color: white;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-        min-height: 300px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .testimonial-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .testimonial-text {
-        flex-grow: 1;
-        font-style: italic;
-        margin-bottom: 20px;
-        position: relative;
-        padding-left: 20px;
-      }
-
-      .testimonial-text::before {
-        content: '"';
-        font-size: 60px;
-        color: #3498db;
-        opacity: 0.2;
-        position: absolute;
-        top: -20px;
-        left: -10px;
-      }
-
-      .testimonial-author {
-        font-weight: bold;
-        color: #2c3e50;
-        margin-top: auto;
-      }
-
-      .testimonial-rating {
-        color: #f39c12;
-        margin: 10px 0;
-        font-size: 18px;
-      }
-
-      /* Shared Carousel Styles */
-      .carousel-nav {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      .carousel-dot {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        background-color: #bdc3c7;
-        border-radius: 50%;
-        margin: 0 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .carousel-dot.active {
-        background-color: #3498db;
-      }
-
-      .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        z-index: 10;
-        border: none;
-      }
-
-      .carousel-arrow.prev {
-        left: -20px;
-      }
-
-      .carousel-arrow.next {
-        right: -20px;
-      }
-
-      @media (max-width: 992px) {
-        .testimonial-card {
-          flex: 0 0 calc(50% - 20px);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .testimonial-card {
-          flex: 0 0 calc(100% - 20px);
-        }
-
-        .carousel-arrow {
-          display: none;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -476,13 +14,9 @@
       <div class="container">
         <nav class="navbar">
           <div class="logo">
-            <img src="images/ttranger_full_logo.png" alt="fulllogo" />
+            <img src="images/ttranger_full_logo.png" alt="TechTrek Ranger logo" />
           </div>
-          <button
-            class="menu-toggle"
-            aria-expanded="false"
-            aria-controls="main-navigation"
-          >
+          <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation">
             <span class="hamburger-icon"></span>
           </button>
           <ul class="nav-links" id="main-navigation" aria-hidden="true">
@@ -492,7 +26,6 @@
             <li><a href="help.html">Help Us</a></li>
           </ul>
         </nav>
-        <script src="script.js"></script>
       </div>
     </header>
 
@@ -501,11 +34,11 @@
       <div class="container">
         <h1>TechTrek Ranger | Science is Adventure</h1>
         <p>
-          We are a non-profit organization based in North Carolina’s Research
+          We are a non-profit organization based in North Carolina's Research
           Triangle Park, committed to making science education fun and
           approachable to kids of all ages. Our volunteers are scientists,
-          engineers, and university professors; and we teach a variaty of
-          cutting-edge topics in science and techology.
+          engineers, and university professors; and we teach a variety of
+          cutting-edge topics in science and technology.
         </p>
         <a href="#contact" class="btn">Schedule a Session</a>
       </div>
@@ -515,9 +48,7 @@
     <section class="theme-gallery">
       <div class="container">
         <div class="gallery-wrapper">
-          <button class="carousel-arrow prev" onclick="prevGallerySlide()">
-            ❮
-          </button>
+          <button class="carousel-arrow prev" onclick="prevGallerySlide()">❮</button>
 
           <div class="gallery-track" id="galleryTrack">
             <div class="gallery-slide">
@@ -527,25 +58,22 @@
                 class="gallery-img"
               />
             </div>
-            <!-- Additional slides -->
           </div>
 
-          <button class="carousel-arrow next" onclick="nextGallerySlide()">
-            ❯
-          </button>
+          <button class="carousel-arrow next" onclick="nextGallerySlide()">❯</button>
         </div>
         <div class="carousel-nav" id="galleryNav"></div>
       </div>
     </section>
 
-    <!-- programs Section -->
+    <!-- Programs Section -->
     <section class="programs" id="programs">
       <div class="container">
         <h2 class="section-title">Ongoing Programs</h2>
         <div class="programs-grid">
           <div class="program-card">
             <div class="program-icon">
-              <img src="images/ai.png" alt="ai" />
+              <img src="images/ai.png" alt="AI Rangers program" />
             </div>
             <h3>AI Rangers</h3>
             <p>
@@ -553,222 +81,12 @@
               entertainment. Join us to learn how to use the most effective
               language to talk to AI agents.
             </p>
-            <div class="age">Best For: 6-12 grade</div>
-            <a href="#contact" class="btn">Learn More...</a>
+            <div class="age">Best For: 6–12 grade</div>
+            <a href="#contact" class="btn">Learn More</a>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Testimonials Section -->
-    <!-- <section class="testimonials">
-      <div class="container">
-        <h2 class="section-title">What Parents and Students Say</h2>
-
-        <div class="testimonials-wrapper">
-          <button class="carousel-arrow prev" onclick="prevTestimonialSlide()">
-            ❮
-          </button>
-
-          <div class="testimonials-track" id="testimonialsTrack">
-            <div class="testimonial-card">
-              <div class="testimonial-text">
-                I went from failing Algebra to getting a B+ in just two months!
-              </div>
-              <div class="testimonial-rating">★★★★★</div>
-              <div class="testimonial-author">- Sarah J.</div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-text">
-                I went from failing Algebra to getting a B+ in just two months!
-              </div>
-              <div class="testimonial-rating">★★★★★</div>
-              <div class="testimonial-author">- Sarah J.</div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-text">
-                I went from failing Algebra to getting a B+ in just two months!
-              </div>
-              <div class="testimonial-rating">★★★★★</div>
-              <div class="testimonial-author">- Sarah J.</div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-text">
-                I went from failing Algebra to getting a B+ in just two months!
-              </div>
-              <div class="testimonial-rating">★★★★★</div>
-              <div class="testimonial-author">- Sarah J.</div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-text">
-                I went from failing Algebra to getting a B+ in just two months!
-              </div>
-              <div class="testimonial-rating">★★★★★</div>
-              <div class="testimonial-author">- Sarah J.</div>
-            </div>
-          </div>
-
-          <button class="carousel-arrow next" onclick="nextTestimonialSlide()">
-            ❯
-          </button>
-        </div>
-        <div class="carousel-nav" id="testimonialsNav"></div>
-      </div>
-    </section>
-
-    <script>
-      // Initialize both carousels with proper containment
-      document.addEventListener("DOMContentLoaded", function () {
-        // Gallery Carousel
-        const galleryTrack = document.getElementById("galleryTrack");
-        const gallerySlides = document.querySelectorAll(".gallery-slide");
-        let galleryIndex = 0;
-
-        // Testimonials Carousel
-        const testimonialsTrack = document.getElementById("testimonialsTrack");
-        const testimonialCards = document.querySelectorAll(".testimonial-card");
-        let testimonialIndex = 0;
-        let cardsPerView =
-          window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
-
-        // Initialize both carousels
-        initCarousels();
-
-        function initCarousels() {
-          // Set up gallery
-          setupCarousel(
-            galleryTrack,
-            gallerySlides,
-            "galleryNav",
-            () => (galleryIndex = (galleryIndex + 1) % gallerySlides.length),
-            "gallery"
-          );
-
-          // Set up testimonials
-          setupCarousel(
-            testimonialsTrack,
-            testimonialCards,
-            "testimonialsNav",
-            () => {
-              if (testimonialIndex < testimonialCards.length - cardsPerView) {
-                testimonialIndex++;
-              } else {
-                testimonialIndex = 0;
-              }
-            },
-            "testimonials"
-          );
-
-          // Handle responsive changes
-          window.addEventListener("resize", function () {
-            const newCardsPerView =
-              window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
-            if (newCardsPerView !== cardsPerView) {
-              cardsPerView = newCardsPerView;
-              testimonialIndex = 0;
-              updateTestimonials();
-            }
-          });
-        }
-
-        function setupCarousel(track, items, navId, nextFn, type) {
-          // Create dots
-          const dotCount =
-            type === "gallery"
-              ? items.length
-              : Math.ceil(items.length / cardsPerView);
-          const nav = document.getElementById(navId);
-          nav.innerHTML = "";
-
-          for (let i = 0; i < dotCount; i++) {
-            const dot = document.createElement("span");
-            dot.classList.add("carousel-dot");
-            if (i === 0) dot.classList.add("active");
-            dot.addEventListener("click", () => {
-              if (type === "gallery") {
-                galleryIndex = i;
-                updateGallery();
-              } else {
-                testimonialIndex = i * cardsPerView;
-                updateTestimonials();
-              }
-            });
-            nav.appendChild(dot);
-          }
-
-          // Start auto-scroll
-          let interval = setInterval(() => {
-            nextFn();
-            if (type === "gallery") updateGallery();
-            else updateTestimonials();
-          }, 5000);
-
-          // Pause on hover
-          track.addEventListener("mouseenter", () => clearInterval(interval));
-          track.addEventListener("mouseleave", () => {
-            interval = setInterval(() => {
-              nextFn();
-              if (type === "gallery") updateGallery();
-              else updateTestimonials();
-            }, 5000);
-          });
-        }
-
-        function updateGallery() {
-          galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
-          updateDots("galleryNav", galleryIndex);
-        }
-
-        function updateTestimonials() {
-          const cardWidth = testimonialCards[0].offsetWidth + 20;
-          testimonialsTrack.style.transform = `translateX(-${
-            testimonialIndex * cardWidth
-          }px)`;
-          updateDots(
-            "testimonialsNav",
-            Math.floor(testimonialIndex / cardsPerView)
-          );
-        }
-
-        function updateDots(navId, activeIndex) {
-          document
-            .querySelectorAll(`#${navId} .carousel-dot`)
-            .forEach((dot, index) => {
-              dot.classList.toggle("active", index === activeIndex);
-            });
-        }
-
-        // Expose navigation functions
-        window.nextGallerySlide = () => {
-          galleryIndex = (galleryIndex + 1) % gallerySlides.length;
-          updateGallery();
-        };
-
-        window.prevGallerySlide = () => {
-          galleryIndex =
-            (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
-          updateGallery();
-        };
-
-        window.nextTestimonialSlide = () => {
-          if (testimonialIndex < testimonialCards.length - cardsPerView) {
-            testimonialIndex++;
-          } else {
-            testimonialIndex = 0;
-          }
-          updateTestimonials();
-        };
-
-        window.prevTestimonialSlide = () => {
-          if (testimonialIndex > 0) {
-            testimonialIndex--;
-          } else {
-            testimonialIndex = testimonialCards.length - cardsPerView;
-          }
-          updateTestimonials();
-        };
-      });
-    </script> -->
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -777,7 +95,7 @@
         <div class="contact-container">
           <div class="contact-form">
             <form
-              id="ContactForm"
+              id="contactForm"
               action="https://formspree.io/f/xnnpbybd"
               method="POST"
             >
@@ -808,24 +126,18 @@
                 <div id="gradeError" class="form-error"></div>
               </div>
               <div class="form-group">
-                <label for="subject">Subject Needed*</label>
+                <label for="subject">Program Interest*</label>
                 <select id="subject" name="subject" required>
-                  <option value="">Select Subject</option>
-                  <option value="elementary">Elementary Math</option>
-                  <option value="middle">Middle School Math</option>
-                  <option value="algebra">Algebra</option>
-                  <option value="geometry">Geometry</option>
-                  <option value="trigonometry">Trigonometry</option>
-                  <option value="precalc">Pre-Calculus</option>
-                  <option value="calculus">Calculus</option>
-                  <option value="sat">SAT Prep</option>
-                  <option value="act">ACT Prep</option>
+                  <option value="">Select Program</option>
+                  <option value="ai">AI Rangers</option>
+                  <option value="hacker">Hacker Rangers</option>
+                  <option value="quantum">Quantum Rangers</option>
                   <option value="other">Other</option>
                 </select>
                 <div id="subjectError" class="form-error"></div>
               </div>
               <div class="form-group">
-                <label for="message">How Can I Help You?*</label>
+                <label for="message">How Can We Help You?*</label>
                 <textarea id="message" name="message" required></textarea>
                 <div id="messageError" class="form-error"></div>
               </div>
@@ -835,103 +147,21 @@
         </div>
       </div>
     </section>
-    <script>
-      document
-        .getElementById("tutorContactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Clear previous errors
-          document
-            .querySelectorAll(".form-error")
-            .forEach((el) => (el.textContent = ""));
-
-          // Validate form
-          let isValid = true;
-          const name = document.getElementById("name").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const studentGrade = document.getElementById("student_grade").value;
-          const subject = document.getElementById("subject").value;
-          const message = document.getElementById("message").value.trim();
-
-          if (name === "") {
-            document.getElementById("nameError").textContent =
-              "Please enter your name";
-            isValid = false;
-          }
-
-          if (email === "") {
-            document.getElementById("emailError").textContent =
-              "Please enter your email";
-            isValid = false;
-          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            document.getElementById("emailError").textContent =
-              "Please enter a valid email";
-            isValid = false;
-          }
-
-          if (studentGrade === "") {
-            document.getElementById("gradeError").textContent =
-              "Please select grade level";
-            isValid = false;
-          }
-
-          if (subject === "") {
-            document.getElementById("subjectError").textContent =
-              "Please select a subject";
-            isValid = false;
-          }
-
-          if (message === "") {
-            document.getElementById("messageError").textContent =
-              "Please enter your message";
-            isValid = false;
-          }
-
-          if (isValid) {
-            // In a real implementation, you would send the form data to a server here
-            // For demonstration, we'll just show the confirmation message
-
-            // Simulate form submission
-            setTimeout(() => {
-              document.getElementById("formConfirmation").style.display =
-                "block";
-              document.getElementById("tutorContactForm").reset();
-
-              // Hide confirmation after 5 seconds
-              setTimeout(() => {
-                document.getElementById("formConfirmation").style.display =
-                  "none";
-              }, 5000);
-            }, 1000);
-
-            // For actual implementation, you would use:
-            // fetch('your-server-endpoint', {
-            //     method: 'POST',
-            //     body: new FormData(this)
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     document.getElementById('formConfirmation').style.display = 'block';
-            //     this.reset();
-            // })
-            // .catch(error => console.error('Error:', error));
-          }
-        });
-    </script>
 
     <!-- Footer -->
     <footer>
       <div class="container">
         <div class="logo">TechTrek Ranger</div>
         <div class="social-links">
-          <a href="#"><i class="fab fa-facebook">f</i></a>
-          <a href="#"><i class="fab fa-twitter">t</i></a>
-          <a href="#"><i class="fab fa-instagram">i</i></a>
-          <a href="#"><i class="fab fa-linkedin">in</i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook">f</i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter">t</i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram">i</i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin">in</i></a>
         </div>
         <p>&copy; 2024 TechTrek Ranger. All Rights Reserved.</p>
       </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

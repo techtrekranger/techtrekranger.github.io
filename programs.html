@@ -1,344 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs | TechTrek Ranger</title>
+    <link rel="icon" type="image/png" href="images/ttranger_half_logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechTrek Ranger</title>
-  <link rel="icon" type="image/png" href="images/ttranger_half_logo.png" />
-  <style>
-    /* Reuse the same styles from index.html */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Arial", sans-serif;
-    }
-
-    body {
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    header {
-      background-color: #e8f9fd;
-      color: #000000;
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .logo img {
-      height: 65px;
-      /* Adjust as needed */
-      margin-left: 10px;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-
-    .nav-links li {
-      margin-left: 30px;
-    }
-
-    .nav-links a {
-      color: #000000;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #3498db;
-    }
-
-    /* Hide the hamburger button on desktop */
-    .menu-toggle {
-      display: none;
-    }
-
-    /* Mobile-First Styling (for screens up to 768px) */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        /* Initially hide the links on mobile */
-        flex-direction: column;
-        position: absolute;
-        top: 100px;
-        /* Adjust based on your header's height */
-        left: 0;
-        width: 100%;
-        background-color: #e8f9fd;
-        padding: 1rem 0;
-        text-align: center;
-        box-shadow: 0 2px 5px #e8f9fd;
-      }
-
-      .nav-links.active {
-        display: flex;
-        /* Show the links when the 'active' class is added */
-      }
-
-      /* Show the hamburger button on mobile */
-      .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-
-      .hamburger-icon {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: rgb(0, 0, 0);
-        position: relative;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .hamburger-icon::before,
-      .hamburger-icon::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        background-color: rgb(0, 0, 0);
-        transition: all 0.3s ease-in-out;
-      }
-
-      .hamburger-icon::before {
-        transform: translateY(-8px);
-      }
-
-      .hamburger-icon::after {
-        transform: translateY(8px);
-      }
-    }
-
-
-    .page-header {
-      background-color: #3498db;
-      color: white;
-      text-align: center;
-      padding: 60px 0;
-    }
-
-    .page-header h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-
-    .team-section {
-      padding: 80px 0;
-      background-color: white;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-      font-size: 36px;
-      color: #2c3e50;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: #3498db;
-      color: white;
-      padding: 12px 30px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #2980b9;
-    }
-
-    /* programs Section */
-    .programs {
-      padding: 80px 0;
-      background-color: #f1f5f9;
-    }
-
-    .programs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .program-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-
-    .program-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .program-icon {
-      text-align: center;
-    }
-
-    .program-icon img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      margin-right: 20px;
-      border-radius: 10px;
-    }
-
-    .program-card h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
-
-    .age {
-      font-size: 20px;
-      font-weight: bold;
-      color: #2c3e50;
-      margin: 15px 0;
-    }
-
-    footer {
-      background-color: #e8f9fd;
-      color: #000000;
-      text-align: center;
-      padding: 30px 0;
-    }
-
-    .social-links {
-      margin: 20px 0;
-    }
-
-    .social-links a {
-      color: #000000;
-      margin: 0 10px;
-      font-size: 20px;
-      transition: color 0.3s;
-    }
-
-    .social-links a:hover {
-      color: #3498db;
-    }
-
-    @media (max-width: 768px) {
-
-      .team-member,
-      .team-member:nth-child(even) {
-        flex-direction: column;
-      }
-
-      .page-header h1 {
-        font-size: 32px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Header & Navigation -->
-  <header>
-    <div class="container">
-      <nav class="navbar">
-        <div class="logo">
-          <img src="images/ttranger_full_logo.png" alt="fulllogo" />
-        </div>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation">
-          <span class="hamburger-icon"></span>
-        </button>
-        <ul class="nav-links" id="main-navigation" aria-hidden="true">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="help.html">Help Us</a></li>
-        </ul>
-      </nav>
-      <script src="script.js"></script>
-    </div>
-  </header>
-
-  <!-- programs Section -->
-  <section class="programs" id="programs">
-    <div class="container">
-      <div class="programs-grid">
-        <div class="program-card">
-          <div class="program-icon">
-            <img src="images/hacker.png" alt="security" />
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <img src="images/ttranger_full_logo.png" alt="TechTrek Ranger logo" />
           </div>
-          <h3>Hacker Rangers</h3>
-          <p>
-            Learn and practice how to protect/hack a cyber system using the elementary algebra you leaned in your class.
-          </p>
-          <div class="age">Best For: 9-12th grade</div>
-          <a href="#contact" class="btn">Learn More...</a>
-        </div>
-        <div class="program-card">
-          <div class="program-icon">
-            <img src="images/quantum.png" alt="quantum" />
+          <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation">
+            <span class="hamburger-icon"></span>
+          </button>
+          <ul class="nav-links" id="main-navigation" aria-hidden="true">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="help.html">Help Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+      <div class="container">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-icon">
+              <img src="images/hacker.png" alt="Hacker Rangers program" />
+            </div>
+            <h3>Hacker Rangers</h3>
+            <p>
+              Learn and practice how to protect and hack a cyber system using the
+              elementary algebra you learned in your class.
+            </p>
+            <div class="age">Best For: 9–12th grade</div>
+            <a href="index.html#contact" class="btn">Learn More</a>
           </div>
-          <h3>Quantum Rangers</h3>
-          <p>
-            See, touch, and build intuition of complex quantum phenomena using board games, 3D annimations, and simple
-            optical experiments.
-          </p>
-          <div class="age">Best For: 9-12th grade</div>
-          <a href="#contact" class="btn">Learn More...</a>
-        </div>
-        <div class="program-card">
-          <div class="program-icon">
-            <img src="images/ai.png" alt="ai" />
+          <div class="program-card">
+            <div class="program-icon">
+              <img src="images/quantum.png" alt="Quantum Rangers program" />
+            </div>
+            <h3>Quantum Rangers</h3>
+            <p>
+              See, touch, and build intuition of complex quantum phenomena using
+              board games, 3D animations, and simple optical experiments.
+            </p>
+            <div class="age">Best For: 9–12th grade</div>
+            <a href="index.html#contact" class="btn">Learn More</a>
           </div>
-          <h3>AI Rangers</h3>
-          <p>
-            Master AI agents to be your everyday partner for study and entertainment. Join us to learn how to use the
-            most effective language to talk to AI agents.
-          </p>
-          <div class="age">Best For: 6-12 grade</div>
-          <a href="#contact" class="btn">Learn More...</a>
+          <div class="program-card">
+            <div class="program-icon">
+              <img src="images/ai.png" alt="AI Rangers program" />
+            </div>
+            <h3>AI Rangers</h3>
+            <p>
+              Master AI agents to be your everyday partner for study and
+              entertainment. Join us to learn how to use the most effective
+              language to talk to AI agents.
+            </p>
+            <div class="age">Best For: 6–12 grade</div>
+            <a href="index.html#contact" class="btn">Learn More</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="logo">TechTrek Ranger</span></div>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook">f</i></a>
-        <a href="#"><i class="fab fa-twitter">t</i></a>
-        <a href="#"><i class="fab fa-instagram">i</i></a>
-        <a href="#"><i class="fab fa-linkedin">in</i></a>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="logo">TechTrek Ranger</div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook">f</i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter">t</i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram">i</i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin">in</i></a>
+        </div>
+        <p>&copy; 2024 TechTrek Ranger. All Rights Reserved.</p>
       </div>
-      <p>&copy; 2024 TechTrek Ranger. All Rights Reserved.</p>
-    </div>
-  </footer>
-</body>
+    </footer>
 
+    <script src="script.js"></script>
+  </body>
 </html>
