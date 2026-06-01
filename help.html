@@ -53,10 +53,16 @@
 
           <!-- PayPal Donation -->
           <div class="donation-payment">
-            <a href="https://www.paypal.com/donate/?hosted_button_id=TMLSHB9E3KPSE"
-               target="_blank" rel="noopener noreferrer">
-              <img src="images/donation.png" alt="Donate via PayPal" style="max-width: 300px; width: 100%;" />
-            </a>
+            <img src="images/donation.png" alt="Donate to TechTrek Ranger" style="max-width: 300px; width: 100%; margin-bottom: 20px;" />
+            <script
+              src="https://www.paypal.com/sdk/js?client-id=BAAdBmkxjYj-x2ZwxnWX7ieUHEcZfRvVLuQ0dmw9VantWjtzL9bYCoFIzfHECmiZzF74nZwgUw59dfyEF8&components=hosted-buttons&enable-funding=venmo&currency=USD">
+            </script>
+            <div id="paypal-container-TMLSHB9E3KPSE"></div>
+            <script>
+              paypal.HostedButtons({
+                hostedButtonId: "TMLSHB9E3KPSE",
+              }).render("#paypal-container-TMLSHB9E3KPSE");
+            </script>
           </div>
 
         </div>
