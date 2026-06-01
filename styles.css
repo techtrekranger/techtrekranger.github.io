@@ -184,7 +184,8 @@ nav {
 
 .programs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
+  justify-content: center;
   gap: 30px;
 }
 
@@ -426,7 +427,7 @@ footer {
   margin-bottom: 60px;
 }
 
-.team-member:nth-child(even) {
+.team-list .team-member:nth-child(even) {
   flex-direction: row-reverse;
 }
 
