@@ -9,6 +9,10 @@
   font-family: "Arial", sans-serif;
 }
 
+img {
+  max-width: 100%; /* prevent any image from ever overflowing its container */
+}
+
 body {
   line-height: 1.6;
   color: #333;
@@ -424,6 +428,15 @@ footer {
 
 .team-member:nth-child(even) {
   flex-direction: row-reverse;
+}
+
+/* Constrain the team photo on desktop */
+.team-member img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
 }
 
 .member-img {
